@@ -1,0 +1,119 @@
+﻿@{
+    ViewData["Title"] = "Projects Overview";
+}
+
+@model ViewModel
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="~/css/site.css" type="text/css" />
+    <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" id="bootstrap-css" />
+</head>
+<body>
+    <div class="container">
+        <h1>@ViewData["Title"]</h1>
+        <br />
+        <br />
+        <div class="sort">
+            <label for="location" class="sort-title">Location:</label>
+            <select id="location">
+                <option value="WIP">WIP</option>
+                <option value="all">All</option>
+                @foreach (var item in Model.Locations)
+                {
+                    <option value="@item.LocationName">@item.LocationName</option>
+                }
+            </select>
+            <label for="skill-group" class="sort-title adjusted">Skill Group:</label>
+            <select id="skill-group">
+                <option value="WIP">WIP</option>
+                <option value="all">All</option>
+                @foreach (var item in Model.SkillGroups)
+                {
+                    <option value="@item.GroupName">@item.GroupName</option>
+                }
+            </select>
+        </div>
+        <div class="report">
+            <div id="basicPrinc">
+                <div id="basicPrincPieChart" style="height: 370px; width: 100%; padding-top: 20px; margin-bottom: 30px;"></div>
+            </div>
+            <div id="Testing">
+                <div id="testingPieChart" style="height: 370px; width: 100%; padding-top: 20px; margin-bottom: 30px;"></div>
+            </div>
+            <!--Need a calculation for number of people for each skill per skill group (top level) / will need to include location filtering-->
+            <!--Next level down will be number of people for each skill level for each skill of selected group (2nd level) / will need to include location filtering-->
+            <!--Lastly Names of people at selected skill level. / will need to include location filtering-->
+        </div>
+    </div>
+
+    <script>
+        window.onload = function () {
+
+            var basicPrinciplesChart = new CanvasJS.Chart("basicPrincPieChart", {
+	            exportEnabled: true,
+	            animationEnabled: true,
+	            title:{
+		            text: "Basic Principles"
+	            },
+	            legend:{
+		            cursor: "pointer",
+		            itemclick: explodePie
+	            },
+	            data: [{
+		            type: "pie",
+		            showInLegend: true,
+		            toolTipContent: "{name}: <strong>{y} People</strong>",
+		            indexLabel: "{y} People",
+		            dataPoints: [
+			            { y: 89, name: "DevOps", exploded: true },
+			            { y: 117, name: "Software Development" },
+			            { y: 41, name: "Solution Architecture" }
+		            ]
+	            }]
+            });
+
+            var testingChart = new CanvasJS.Chart("testingPieChart", {
+	            exportEnabled: true,
+	            animationEnabled: true,
+	            title:{
+		            text: "Testing"
+	            },
+	            data: [{
+		            type: "pie",
+		            toolTipContent: "{name}: <strong>{y} People</strong>",
+		            indexLabel: "{name} - {y} People",
+		            dataPoints: [
+			            { y: 2, name: "ALM", exploded: true },
+			            { y: 7, name: "Cucumber" },
+                        { y: 0, name: "Gatling" },
+                        { y: 1, name: "Jira" },
+                        { y: 0, name: "Jmeter" },
+                        { y: 28, name: "JUnit" },
+                        { y: 0, name: "Mocha" },
+                        { y: 0, name: "Panaya" },
+                        { y: 13, name: "Selenium" }
+		            ]
+	            }]
+            });
+
+            basicPrinciplesChart.render();
+            testingChart.render();
+        }
+
+
+        function explodePie (e) {
+	        if(typeof (e.dataSeries.dataPoints[e.dataPointIndex].exploded) === "undefined" || !e.dataSeries.dataPoints[e.dataPointIndex].exploded) {
+		        e.dataSeries.dataPoints[e.dataPointIndex].exploded = true;
+	        } else {
+		        e.dataSeries.dataPoints[e.dataPointIndex].exploded = false;
+	        }
+	        e.chart.render();
+
+        }
+    </script>
+    <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+</body>
+</html>

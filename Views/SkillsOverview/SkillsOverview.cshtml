@@ -1,0 +1,118 @@
+﻿@{
+    ViewData["Title"] = "Skills Overview";
+}
+
+@model ViewModel
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" id="bootstrap-css" />
+    <link rel="stylesheet" href="~/css/site.css" type="text/css" />
+    <link rel="stylesheet" href="~/css/skillsOverview.css" type="text/css" />
+
+    <script src="~/lib/jquery-ajax-unobtrusive/dist/jquery.unobtrusive-ajax.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+    <script src="~/js/Chart/Chart.min.js"></script>
+    <script src="~/js/chartjs-plugin-colorschemes.js"></script>
+    <script src="~/js/chartjs-plugin-labels.js"></script>
+    <script src="~/js/radarChart.js"></script>
+</head>
+<body>
+    <br/>
+    <br/>
+    <br/>
+    <div class="upload">
+        <label id="upload-label" for="fileUpload">Please select the latest Skill Report csv file</label>
+        <input type="file" id="fileUpload" />
+    </div>
+    <hr />
+    <h1 id="h1Overview">Skill Overview</h1>
+    <div  class="flex-container">
+        <div id="dvSelect">
+            <label for="slManager">Manager:</label>
+            <select id="slManager" onchange="SelectManager(this.value)">
+            </select>
+        </div>
+        <div id="dvSelect">
+            <label for="slLocation">Location:</label>
+            <select id="slLocation" onchange="SelectLocation(this.value)">
+            </select>
+        </div>    
+    </div>    
+    <div  class="flex-container">
+        <div id="dvSelect">
+            <label for="slParentGroup">Skill Parent Group:</label>
+            <select id="slParentGroup" onchange="SelectParentGroup(this.value)">
+            </select>
+        </div>    
+        <div id="dvSelect">
+            <label for="slGroup">Skill Group:</label>
+            <select id="slGroup" onchange="SelectGroup(this.value)">
+            </select>
+        </div>    
+        <div id="dvSelect">
+            <label for="slMinLevel">Minimum Skill Level:</label>
+            <select id="slMinLevel" onchange="SelectMinLevel(this.value)">
+            </select>
+        </div>    
+        <label class="as-link" style="padding: 15px" onclick="ResetDoughnut()">reset</label>
+    </div>   
+    <div id="dvDoughnutChart" >
+        <canvas id="canvasDN"></canvas>
+        <ul id="contextMenu" style="display:none;">
+            <li class="menu-item" onclick="doughnutMenu(0)">Only This Skill</li>
+            <li class="menu-item" onclick="doughnutMenu(1)">First Skill</li>
+            <li class="menu-item" onclick="doughnutMenu(2)">Second Skill</li>
+            <li class="menu-item" onclick="doughnutMenu(3)">Third Skill</li>
+        </ul>
+    </div>
+    <hr />
+    <h1 id="h1Search">Skill Search</h1>
+    <div class="flex-container">
+        <div id="dvSelect">
+            <label for="slSkillSearch1">First Skill:</label>
+            <select id="slSkillSearch1" onchange="SelectSkillSearch()">
+            </select>
+        </div>
+        <div id="dvSelect">
+            <label for="slSkillSearch2">Second Skill:</label>
+            <select id="slSkillSearch2" onchange="SelectSkillSearch()">
+            </select>
+        </div>    
+        <div id="dvSelect">
+            <label for="slSkillSearch3">Third Skill:</label>
+            <select id="slSkillSearch3" onchange="SelectSkillSearch()">
+            </select>
+        </div>
+        <label class="as-link" style="padding: 15px" onclick="ResetSearch()">reset</label>
+    </div>    
+    <div id="dvSkillResults">
+    </div>
+    <hr />
+    <h1 id="h1Person">Person Details</h1>
+    <div class="flex-container">
+        <div id="dvSelect">
+            <label for="slPeople">Selected Person:</label>
+            <select id="slPeople" onchange="SelectPerson(this.value)">
+            </select>
+        </div>
+    </div>
+    <div class="flex-container">
+        <div id="dvPerson">
+        </div>
+        <div id="dvSkills" >
+        </div>
+    </div>
+    <div id="dvRadarPlot" >
+        <canvas id="canvasRP"></canvas>
+    </div>
+
+    
+    <script>
+     
+    </script>
+</body>
+</html>

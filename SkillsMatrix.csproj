@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project Sdk="Microsoft.NET.Sdk.Web">
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.0</TargetFramework>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.1.3">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="3.1.3" />
+    <PackageReference Include="Microsoft.jQuery.Unobtrusive.Ajax" Version="3.2.6" />
+    <PackageReference Include="Microsoft.Office.Interop.Excel" Version="15.0.4795.1000" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.2" />
+    <PackageReference Include="MySql.Data" Version="8.0.19" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="wwwroot\lib\jquery-ajax-unobtrusive\" />
+    <Content Include=".vscode\launch.json" />
+    <Content Include="Controllers\SkillsController.cs" />
+    <Content Include="Controllers\SkillsOverviewController.cs" />
+    <Content Include="Controllers\ProjectsOverviewController.cs" />
+    <Content Include="Controllers\ManagementController.cs" />
+    <Content Include="Controllers\AdminController.cs" />
+    <Content Include="Controllers\PeopleController.cs" />
+    <Content Include="Controllers\HelpController.cs" />
+    <Content Include="Controllers\HomeController.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.Office.Interop.Excel">
+      <HintPath>..\..\..\..\..\..\Windows\assembly\GAC_MSIL\Microsoft.Office.Interop.Excel\15.0.0.0__71e9bce111e9429c\Microsoft.Office.Interop.Excel.dll</HintPath>
+      <Private>true</Private>
+      <EmbedInteropTypes>true</EmbedInteropTypes>
+    </Reference>
+    <Content Include="Models\UploadModel.cs" />
+    <Content Include="Models\FileReaderModel.cs" />
+    <Content Include="Controllers\UploadController.cs" />
+    <Content Include="Controllers\RecordController.cs" />
+    <Content Include="Controllers\SkillGroupController.cs" />
+    <Content Include="Models\AssignmentModel.cs" />
+    <Content Include="Models\ErrorViewModel.cs" />
+    <Content Include="Models\PersonModel.cs" />
+    <Content Include="Models\LocationModel.cs" />
+    <Content Include="Models\ProjectModel.cs" />
+    <Content Include="Models\RecordsModel.cs" />
+    <Content Include="Models\RoleModel.cs" />
+    <Content Include="Models\SkillGroupModel.cs" />
+    <Content Include="Models\SkillLevelsModel.cs" />
+    <Content Include="Models\SkillsMatrixDB.cs" />
+    <Content Include="Models\SkillsModel.cs" />
+    <Content Include="Models\ViewModel.cs" />
+    <Content Include="Models\SkillGroupParentModel.cs" />
+  </ItemGroup>
+</Project>

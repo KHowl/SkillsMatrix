@@ -1,0 +1,44 @@
+@{
+    ViewData["Title"] = "Help";
+}
+
+<!DOCTYPE html>
+<html lang=en>
+<head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" id="bootstrap-css" />
+    <link rel="stylesheet" href="~/css/site.css" type="text/css" />
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>@ViewData["Title"]</h1>
+        <br />
+        <br />
+        <div class="contact-us">
+            <h4>Contact Us:</h4>
+            <form> <!-- TODO add these when the method is set up: asp-controller="Help" asp-action="SaveContact"-->
+                <label for="txtName">Name</label>
+                <input type="text" id="txtName" name="Name" placeholder="Your Name...">
+
+                <label for="txtEmail">Email</label>
+                <input type="text" id="txtEmail" name="Email" placeholder="Your Email...">
+
+                <label for="txtComment">Comment</label>
+                <textarea id="txtComment" name="Comment" placeholder="Write Something..." style="height:200px"></textarea>
+
+                <input type="submit" value="Submit">
+            </form>            
+        </div>
+
+        <p class="version-info">Version: 0.1</p>
+    </div>
+    
+
+    <script>
+
+    </script>
+</body>
+</html>

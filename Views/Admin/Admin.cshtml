@@ -1,0 +1,82 @@
+﻿@{
+    ViewData["Title"] = "Admin";
+}
+
+@model ViewModel
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" id="bootstrap-css" />
+    <link rel="stylesheet" href="~/css/site.css" type="text/css" />
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>@ViewData["Title"]</h1>
+        <br />
+        <br />
+
+        <h3>Upload Data</h3>
+        <br />
+        <br />
+
+        <form> <!-- TODO Add to form tag when implemtented in controller: asp-controller="Admin" asp-action-"UploadFile"-->
+            <div class="upload-btn-wrapper">
+                <button class="btn" id="upload-btn">Please select the latest Skill Report csv file</button>
+                <input type="file" id="fileUpload" accept=".csv, text/csv" />
+            </div>                  
+        </form>
+    </div>
+
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $("input[type=file]").on('change',function(){
+                var fullPath = document.getElementById('fileUpload').value;
+                if (fullPath) {
+                    var startIndex = (fullPath.indexOf('\\') >= 0 ? fullPath.lastIndexOf('\\') : fullPath.lastIndexOf('/'));
+                    var filename = fullPath.substring(startIndex);
+                    if (filename.indexOf('\\') === 0 || filename.indexOf('/') === 0) {
+                        filename = filename.substring(1);
+                    }
+                    var button = document.getElementById("upload-btn");
+                    button.innerHTML = filename;
+                }
+
+                Upload();
+            });
+        });
+
+        // Action user pressing Upload.
+        function Upload() {
+            alert("Upload has been hit.");
+            /*var fileUpload = document.getElementById("fileUpload");
+            var regex = /^([a-zA-Z0-9\s_\\.\-:])+(.csv|.txt)$/;
+            if (regex.test(fileUpload.value.toLowerCase())) {
+                if (typeof (FileReader) != "undefined") {
+                    var reader = new FileReader();
+                    reader.onload = function (e) {
+                        var rows = e.target.result.split("\n");
+
+                        PopulateStore(rows);
+                        PopulateSkillOptions();
+                        PopulatePeopleOptions();
+                        PopulateParentGroupSkillOptions();
+ 
+                    }
+                    reader.readAsText(fileUpload.files[0]);
+                } else {
+                    alert("This browser does not support HTML5.");
+                }
+            } else {
+                alert("Please upload a valid CSV file.");
+            }*/
+        }
+    </script>
+</body>
+</html>
+
+

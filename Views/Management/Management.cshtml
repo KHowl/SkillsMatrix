@@ -1,0 +1,39 @@
+@{
+    ViewData["Title"] = "Management";
+}
+
+<!DOCTYPE html>
+<html lang=en>
+<head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" id="bootstrap-css" />
+    <link rel="stylesheet" href="~/css/site.css" type="text/css" />
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>@ViewData["Title"]</h1>
+        <br />
+        <br />
+
+        <h3>Manage Delegates</h3>
+        <br/>
+        <form> <!-- TODO Add to form tag once function is added in controller: asp-controller="Management" asp-action="AssignDelegate" -->
+            <label for="managers">Managers to delegate to:</label>
+            <select id="managers">
+                <option value="rab">Rab Always</option> <!-- TODO This will be a for loop to get from database of managers -->
+            </select>
+
+            <input type="submit" value="Assign">
+        </form>
+        
+
+    </div>
+
+    <script type="text/javascript">
+
+    </script>
+</body>
+</html>

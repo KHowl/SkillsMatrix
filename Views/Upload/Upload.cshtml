@@ -1,0 +1,97 @@
+﻿@{
+    ViewData["Title"] = "Upload";
+}
+
+@model ViewModel
+
+<head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" id="bootstrap-css" />
+    <link rel="stylesheet" href="~/css/site.css" type="text/css" />
+
+    <script src="~/lib/jquery-ajax-unobtrusive/dist/jquery.unobtrusive-ajax.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+
+</head>
+<body>
+    <div class="container">
+        <h1>@ViewData["Title"]</h1>
+        <br />
+
+        <h3>Upload Data</h3>
+
+
+
+        @using (Html.BeginForm("Upload", "Upload", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+
+            <table class="fileLoader">
+                <tr>
+                    <td align="left">
+                        <label for="mngskill">Manager Skill Report csv file:</label>
+                    </td>
+                    <td align="right">
+                        <input type="file" id="mngskill" name="files.MgrReportFilename" accept=".csv, text/csv, .xlsx" style="width:500px" />
+                    </td>
+                </tr>
+                <tr>
+                    <td align="left">
+                        <label for="teamskill">PPM Report Spreadsheet:</label>
+                    </td>
+                    <td align="right">
+                        <input type="file" id="teamskill" name="files.PpmFilename" accept=".csv, text/csv, .xlsx" style="width:500px" />
+                    </td>
+                </tr>
+                <tr>
+                    <td align="left">
+                        <label for="teamdist">Distribution Spreadsheet:</label>
+                    </td>
+                    <td align="right">
+                        <input type="file" id="teamdist" name="files.DistFilename" accept=".csv, text/csv, .xlsx" style="width:500px" />
+                    </td>
+                </tr>
+            </table>
+            <br />
+            <input type="submit" value="Upload" class="btn-primary" onclick="this.value='Uploading...'" />
+
+        }
+        <h4>@Html.Raw(ViewBag.Msg)</h4>
+    </div>
+    <div>
+        @if (Model.Upload.PpmUnknownUsers != null && Model.Upload.PpmUnknownUsers.Count > 0)
+        {
+        <h4>Unknown PPM Report Spreadsheet Users</h4>
+            <table class="namesTable">
+                <tr>
+                    <th>Name</th>
+                </tr>
+                @foreach (var item in Model.Upload.PpmUnknownUsers)
+                {
+                    <tr id="distNames">
+                        <td>@item</td>
+                    </tr>
+                }
+            </table>
+        }
+        @if (Model.Upload.DistUnknownUsers != null && Model.Upload.DistUnknownUsers.Count > 0)
+        {
+    <h4>Unknown Distribution Spreadsheet Users</h4>
+            <table class="namesTable">
+                <tr>
+                    <th>Name</th>
+                </tr>
+                @foreach (var item in Model.Upload.DistUnknownUsers)
+                {
+                    <tr id="distNames">
+                        <td>@item</td>
+                    </tr>
+                }
+            </table>
+        }
+    </div>
+
+</body>
+
+
+

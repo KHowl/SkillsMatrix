@@ -1,0 +1,55 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<!DOCTYPE html>
+<html lang=en>
+<head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" id="bootstrap-css" />
+    <link rel="stylesheet" href="~/css/site.css" type="text/css" />
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="text-center">
+            <h1 class="display-4">Welcome</h1>
+            <p>Here we will be a message for everyone to see when they log in to the MIMIR.</p>
+        </div>
+
+        <div class="home-content">
+            <div class="column left">
+                <h5>Useful Links</h5>
+                <ul class="useful-links">
+                    <li>
+                        <p>To look at an overview of the skills for your employees - <a asp-controller="SkillsOverview" asp-action="SkillsOverview">Skills Overview</a>.</p>
+                    </li>
+                    <li>
+                        <p>To look at an overview of the projects for your employees - <a asp-controller="ProjectsOverview" asp-action="ProjectsOverview">Projects Overview</a>.</p>
+                    </li>
+                    <li>
+                        <p>To assign a delegate manager to look after your employees - <a asp-controller="Management" asp-action="Management">Management</a>.</p>
+                    </li>
+                    <li>
+                        <p>For Level 1 and Level 2 Managers, Upload Skills and Project Files - <a asp-controller="Admin" asp-action="Admin">Admin</a>.</p>
+                    </li>
+                    <li>
+                        <p>If something has broken or an error has occured please contact us or use the file <a asp-controller="Help" asp-action="Help">here.</a></p>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="column right">
+                <h5>Notifications</h5>
+                <p>No Notification to show...for now...</p>
+            </div>
+        </div>        
+    </div>    
+
+    <script>
+
+    </script>
+</body>
+</html>
